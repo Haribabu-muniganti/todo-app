@@ -1,0 +1,75 @@
+<div class="main_todo">
+    <div class="flex no-wrap w-100">
+
+        <div class="flex col no-wrap todo_column" [class.todo_column_mobile]="isMobile">
+            <div class="heading" [class.heading_mobile]="isMobile"> To Do List</div>
+            <div class="search_container" [class.search_container_mobile]="isMobile">
+                <input [(ngModel)]="searchText" class="search" placeholder="Start Typing...">
+            </div>
+
+            <div class="todo_list" [class.todo_list_mobile]="isMobile">
+
+
+                <ng-container *ngFor="let item of todoList | searchFilter:searchText ;let i=index">
+                    <div class="flex no-wrap b_none" [class.mobile_border]="isMobile">
+
+                        <div class="flex middle-xs no-wrap todo_item" [class.mobileVersion]="isMobile"   [@openClose]="(selectedItem == i) ? 'open' : 'closed'">
+
+                            <div *ngIf="!isMobile || !item.completed" class="todo_status" (click)="markAsComplete(item)">
+
+                            </div>
+
+                            <mat-icon *ngIf="isMobile && item.completed" class="checked">check_circle</mat-icon>
+
+                            <input class="editField" autofocus type="text" (blur)="activateEditMode(false)" *ngIf="editMode && selectedItem == i" [(ngModel)]="item.title" (keydown.enter)="editItem(item)">
+
+                            <div class="todo_title" (click)="showActions(i)">
+                                <span  *ngIf="!(editMode && selectedItem == i)">{{item.title}}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex no-wrap" *ngIf="selectedItem == i">
+
+                            <div class="flex middle-xs action_icon  bg-edit" (click)="activateEditMode(true)">
+                                <mat-icon class="edit_icon">edit</mat-icon>
+                            </div>
+
+                            <div class="flex middle-xs action_icon bg-delete" (click)="deleteItem(item)">
+                                <mat-icon class="delete_icon">delete</mat-icon>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </ng-container>
+
+            </div>
+        </div>
+
+        <div class="flex col no-wrap todo_column" *ngIf="!isMobile">
+            <div class="heading">Done</div>
+            <div class="todo_list">
+
+                <ng-container *ngFor="let item of completedList;let i=index">
+                    <div class="flex no-wrap">
+                        <div class="flex middle-xs no-wrap todo_item">
+
+                            <mat-icon class="checked">check_circle</mat-icon>
+
+                            <div class="todo_title">
+                                <span>{{item.title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="add_btn">
+        <div class="flex middle-xs bg-add">
+            <mat-icon class="add_icon" (click)="addItem()">add_circle</mat-icon>
+        </div>
+    </div>
+</div>

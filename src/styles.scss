@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/variables.scss';
+
+html, body { height: 100%; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #dddddd;
+}
+
+
+.flex {
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.flex.col{
+    flex-direction: column;
+}
+
+.no-wrap{
+    flex-wrap: nowrap;
+}
+
+.start-xs {
+    -ms-flex-pack: start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    text-align: start;
+}
+
+.center-xs {
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.end-xs {
+    -ms-flex-pack: end;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    text-align: end;
+}
+
+.top-xs {
+    -ms-flex-align: start;
+    -webkit-box-align: start;
+    align-items: flex-start;
+}
+
+.middle-xs {
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.bottom-xs {
+    -ms-flex-align: end;
+    -webkit-box-align: end;
+    align-items: flex-end;
+}
+
+.around-xs {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+.between-xs {
+    -ms-flex-pack: justify;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.w-100{
+   width: 100%;
+}
+
+.b_none{
+    border-bottom: none;
+}

@@ -1,0 +1,21 @@
+<div class="head flex middle-xs between-xs">
+    <div class="logo">
+        <img src="assets/logo.svg" class="logo__icon">
+    </div>
+    <div class="menu flex" *ngIf="!isMobile">
+        <div *ngFor="let item of menu" class="menuItem">
+            {{item| uppercase }}
+        </div>
+    </div>
+    <div *ngIf="isMobile" (click)="isMenuOpened = !isMenuOpened">
+        <mat-icon *ngIf="!isMenuOpened">dehaze</mat-icon>
+        <mat-icon *ngIf="isMenuOpened">clear</mat-icon>
+    </div>
+
+    <div class="flex col mobileMenu" *ngIf="isMobile && isMenuOpened">
+        <div *ngFor="let item of menu" class="menuItem">
+            {{item | uppercase}}
+        </div>
+    </div>
+
+</div>
